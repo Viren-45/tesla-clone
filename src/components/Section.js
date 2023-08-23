@@ -1,30 +1,29 @@
 import React from 'react'
 import styled from "styled-components"
-import Fade from "react-reveal/Fade"
+import downArrow from "../images/down-arrow.svg";
+// import Fade from "react-reveal/Fade"
 
-function Section(props) {
+function Section({ title, description, leftBtnText, rightBtnText, backgroundImg }) {
   return (
-    <Wrap bgImage = {props.backgroundImg}>
-        <Fade bottom>
+    <Wrap  style={{
+      backgroundImage: `url(${backgroundImg})`
+    }}>
           <ItemText>
-            <h1>{props.title}</h1>
-            <p>{props.description}</p>
+            <h1>{ title }</h1>
+            <p>{ description }</p>
           </ItemText>
-        </Fade>
         <Buttons>
-          <Fade bottom>
             <ButtonGroup>
               <LeftButton>
-                {props.leftBtnText}
+                { leftBtnText }
               </LeftButton>
-              {props.rightBtnText &&
+              { rightBtnText &&
                 <RightButton>
-                  {props.rightBtnText}
+                  { rightBtnText }
                 </RightButton>
               }
             </ButtonGroup>
-          </Fade>
-          <DownArrow src="/images/down-arrow.svg" />
+          <DownArrow src={downArrow} alt='down-arrow' />
         </Buttons> 
     </Wrap>
   )
@@ -38,12 +37,10 @@ const Wrap = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/images/model-s.jpg");
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-image: ${props => `url("/images/${props.bgImage}")`}
 `
 
 const ItemText = styled.div`
